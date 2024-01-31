@@ -33,28 +33,52 @@ class PersonalAdministration {
     }
 
     private fun registerTeacher() {
-        printer.printMessage("Ingrese el nombre o los nombres")
-        val names  = readln()
-        val teacher = Teacher(names, 35, "Perez", "Prado", 2143564)
-        teacherList.add(teacher)
-        val teacher2 = Teacher("Pedrito", 35, "Perez", "Prado", 2143564)
-        teacherList.add(teacher2)
+        printer.apply {
+            printMessage("Ingrese el nombre")
+            val name = readln()
+            printMessage("Ingrese apellido paterno")
+            val firstLastName = readln()
+            printMessage("Ingrese el apellido materno")
+            val secondLastName = readln()
+            printMessage("Ingrese la edad")
+            val age = readln().toInt()
+            printMessage("Ingrese el numero de nomina")
+            val payRollId = readln().toLong()
+            val teacher = Teacher(name, age, firstLastName, secondLastName, payRollId)
+            teacherList.add(teacher)
+        }
+        showMenu()
     }
 
     private fun registerStudent() {
-        val student = Student("Juan", 35, "Perez", "Prado", 2143564)
-        studentList.add(student)
+        printer.apply {
+            printMessage("Ingrese el nombre")
+            val name = readln()
+            printMessage("Ingrese apellido paterno")
+            val firstLastName = readln()
+            printMessage("Ingrese el apellido materno")
+            val secondLastName = readln()
+            printMessage("Ingrese la edad")
+            val age = readln().toInt()
+            printMessage("Ingrese la matricula")
+            val enrollmentId = readln().toLong()
+            val student = Student(name, age, firstLastName, secondLastName, enrollmentId)
+            studentList.add(student)
+        }
+        showMenu()
     }
 
     private fun showTeachers() {
         for (teacher in teacherList) {
             println(teacher.toString())
         }
+        showMenu()
     }
 
     private fun showStudents() {
         for (student in studentList) {
             student.name
         }
+        showMenu()
     }
 }
